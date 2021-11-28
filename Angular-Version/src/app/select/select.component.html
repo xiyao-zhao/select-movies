@@ -1,0 +1,20 @@
+<section class="select">
+    <div class="selectAll">
+        <input type="checkbox" id="all" [checked]="checkAll" (click)="selectAll($event)" />
+        <label for="all">Select All</label>
+    </div>
+    <div class="movieList" *ngFor="let movie of itemList">
+        <input type="checkbox" id="{{ movie }}" [checked]="isChecked" (click)="onClick($event)" />
+        <label for="{{ movie }}">{{ movie }}</label>
+    </div>
+    <button class="clearAll" (click)="clearAll($event)">Clear All</button>
+</section>
+<hr />
+<section class="display">
+    <p>Selected Movies:</p>
+    <!-- <ul class="selected" [hidden]="checkAll"></ul> -->
+    <ul class="selected">
+        <!-- <li [hidden]="!checkAll" *ngFor="let movie of itemList">{{ movie }}</li> -->
+        <li *ngFor="let list of renderList">{{ list }}</li>
+    </ul>
+</section>
