@@ -1,0 +1,30 @@
+<form [formGroup]="form" class="select">
+    <div class="selectAll">
+        <input 
+            type="checkbox" 
+            id="all" 
+            formControlName="selectAll"/>
+        <label for="all">Select All</label>
+    </div>
+    <div formGroupName="movieList">
+        <div 
+            class="movieList" 
+            *ngFor="let movie of itemList; let i = index"
+        >
+            <input 
+                type="checkbox" 
+                id="{{ movie }}" 
+                formControlName="{{ movie }}"
+            />
+            <label for="{{ movie }}">{{ movie }}</label>
+        </div>
+    </div>
+</form>
+<button class="clearAll" (click)="clearAll($event)">Clear All</button>
+<hr />
+<section class="display">
+    <p>Selected Movies:</p>
+    <ul class="selected">
+        <li *ngFor="let list of renderList">{{ list }}</li>
+    </ul>
+</section>
