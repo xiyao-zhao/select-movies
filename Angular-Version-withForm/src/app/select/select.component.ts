@@ -51,14 +51,11 @@ export class SelectComponent implements OnInit {
                         this.renderList.push(list);
                         // If all movieList are selected, check Select All
                         if (this.renderList.length === this.itemList.length) {
-                            this.form.controls.selectAll.setValue(true);
-                            // If not all moiveList are selected, uncheck Select All
+                            this.form.controls.selectAll.setValue(true, {emitEvent:false});
                         } 
-                        // else {
-                        //     this.form.controls.selectAll.setValue(false);
-                        // }
                     } else {
                         this.renderList.splice(this.renderList.indexOf(list), 1);
+                        this.form.controls.selectAll.setValue(false, {emitEvent:false});
                     }
                 });
         })
